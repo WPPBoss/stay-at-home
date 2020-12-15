@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="author" content="bcdestiller">
+        <meta name="description" content="Simple COVID-19 Dashboard">
+        <meta name="keywords" content="covid 19 data, coronavirus, coronavirus pandemic, covid 19 pandemic, covid 19 cases, covid 19, covid 19 dashboard">
+        <meta name="viewport" content="width=device-width, initial-scale=0.7">
+        <title>Stay@Home</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" type="image/png" href="img/icon.png">        
+        <script src="scripts/script.js"></script>
+    </head>
+    <body>
+        <!-- Search Bar-->
+        <div class="search-bar">
+            <input type="search" id="select-country" list="country-list" placeholder="Search Country...">
+            <img id="search-icon" src="img/search.png" alt="" onclick="clicked()">
+            <datalist id="country-list"></datalist>   
+            <script>
+                const sc = document.getElementById("select-country");
+                sc.addEventListener("keyup", function(event){
+                    if(event.keyCode == 13){
+                    let sValue = document.getElementById("select-country").value;
+                    console.log(sValue);
+                    getLocalData(sValue);
+                    }
+                });         
+                function clicked(){
+                    let sValue = document.getElementById("select-country").value;
+                    console.log(sValue);
+                    getLocalData(sValue);
+                }
+            </script>
+        </div>
+
+        <h2 id="main-heading">COVID-19 PANDEMIC</h2> 
+
+        <!-- Local Data Section-->
+        <section id="local-section">
+            <ul>
+                <li>
+                    <img src="img/cases.png" alt="" class="local-icon">
+                    <div class="content-text">
+                        <p>Cases</p>
+                        <h2 id="lcases">Select Country</h2>
+                    </div>
+                </li>
+                <li>
+                    <img src="img/new.png" alt="" class="local-icon">
+                    <div class="content-text">
+                        <p>New Cases</p>
+                        <h2 id="ncases">Select Country</h2>                        
+                    </div>
+                </li>
+                <li>
+                    <img src="img/deaths.png" alt="" class="local-icon">
+                    <div class="content-text">
+                        <p>Deaths</p>
+                        <h2 id="ldeaths">Select Country</h2>                        
+                    </div>
+                </li>
+                <li>
+                    <img src="img/recovered.png" alt="" class="local-icon">
+                    <div class="content-text">
+                        <p>Recovered</p>
+                        <h2 id="lrecovered">Select Country</h2>                        
+                    </div>
+                </li>
+            </ul>
+            
+        </section>
+        <p id="update-text" style="color: gray; font-size: 0.85em;">refresh page to update world statistics</p>
+        <!-- Global Data Section-->
+        <section id="global-section">
+            <div class="content-wrapper">    
+                <div>
+                    <h2>Worldwide Cases:</h2>
+                    <h2 id="tcases" class="total-cases" style="padding-bottom: 0.5em;">000000000</h2>
+                </div>
+                <div class="container">
+                    <div>
+                        <h2>Total Deaths:</h2>
+                        <h2 id="tdeaths" class="total-deaths" style="padding-bottom: 0.5em;">000000000</h2>
+                    </div>
+                    <div>
+                        <h2>Total Recovered:</h2>
+                        <h2 id="trecovered" class="total-recovered">000000000</h2>
+                    </div>               
+                </div>
+            </div>
+        </section>
+
+        <!--Footer-->
+        <footer id="body-footer">
+            <div class="content-wrapper">
+                <h3>Sources:</h3>
+                <ul>
+                    <li><a class="sources" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/">Novel Coronavirus (2019-nCoV) situation reports</a> - <a href="https://www.who.int/">World Health Organization</a></li>
+                    <li><a class="sources" href="https://www.worldometers.info/coronavirus/">worldometers.info</a></li>
+                </ul>
+                
+            </div>
+                <h3 class="about"><a href="pages/about.html">About</a></h3>
+                <h3 class="about"><a href="pages/wireframes.html">Wireframes</a></h3>
+        </footer>
+    </body>
+</html>
